@@ -1,3 +1,0 @@
-  <connectionStrings>
-    <add name="NAAEntities" connectionString="metadata=res://*/NAADataModel.csdl|res://*/NAADataModel.ssdl|res://*/NAADataModel.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=teach-l-sql1\awa2;initial catalog=b7033055;persist security info=True;user id=b7033055;password=Gerryman21;MultipleActiveResultSets=True;App=EntityFramework&quot;" providerName="System.Data.EntityClient" />
-  </connectionStrings>
