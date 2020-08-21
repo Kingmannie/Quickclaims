@@ -1,0 +1,250 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="QuickclaimsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Car_Insurance_Claim">
+          <Key>
+            <PropertyRef Name="Claim_ID" />
+          </Key>
+          <Property Name="Claim_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Policy_ID" Type="int" Nullable="false" />
+          <Property Name="Company_ID" Type="int" Nullable="false" />
+          <Property Name="claim_title" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="datetimeofaccident" Type="date" Nullable="false" />
+          <Property Name="car_reg" Type="varchar" MaxLength="12" Nullable="false" />
+          <Property Name="car_make" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="car_model" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="car_colour" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="parked_unparked" Type="bit" Nullable="false" />
+          <Property Name="weather" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="light_level" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="road_quality" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="damage_description" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="injury_description" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="geolocation" Type="varchar" MaxLength="255" />
+          <Property Name="manual_location" Type="varchar" MaxLength="255" />
+          <Property Name="to_blame" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Car_Insurance_Company">
+          <Key>
+            <PropertyRef Name="Company_ID" />
+          </Key>
+          <Property Name="Company_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Company_Name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Address" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Postcode" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Tel" Type="varchar" MaxLength="12" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Claim_Person">
+          <Key>
+            <PropertyRef Name="Person_ID" />
+          </Key>
+          <Property Name="Person_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Claim_ID" Type="int" Nullable="false" />
+          <Property Name="is_driver" Type="bit" Nullable="false" />
+          <Property Name="is_witness" Type="bit" Nullable="false" />
+          <Property Name="is_owner" Type="bit" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="address" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="postcode" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="car_reg" Type="varchar" MaxLength="12" />
+          <Property Name="has_insurance" Type="bit" />
+          <Property Name="insurance_comp" Type="varchar" MaxLength="100" />
+          <Property Name="insurance_addr" Type="varchar" MaxLength="255" />
+          <Property Name="insurance_postcode" Type="varchar" MaxLength="10" />
+          <Property Name="wit_statement" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Insurance_Policy">
+          <Key>
+            <PropertyRef Name="Policy_ID" />
+          </Key>
+          <Property Name="Policy_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Company_ID" Type="int" Nullable="false" />
+          <Property Name="policyholder_name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="policyholder_dob" Type="date" Nullable="false" />
+          <Property Name="date_started" Type="date" Nullable="false" />
+          <Property Name="date_end" Type="date" Nullable="false" />
+          <Property Name="type" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="QuickclaimsModelStoreContainer">
+          <EntitySet Name="Car_Insurance_Claim" EntityType="Self.Car_Insurance_Claim" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Car_Insurance_Company" EntityType="Self.Car_Insurance_Company" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Claim_Person" EntityType="Self.Claim_Person" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Insurance_Policy" EntityType="Self.Insurance_Policy" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="QuickclaimsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Car_Insurance_Claim">
+          <Key>
+            <PropertyRef Name="Claim_ID" />
+          </Key>
+          <Property Name="Claim_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Policy_ID" Type="Int32" Nullable="false" />
+          <Property Name="Company_ID" Type="Int32" Nullable="false" />
+          <Property Name="claim_title" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="datetimeofaccident" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="car_reg" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="car_make" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="car_model" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="car_colour" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="parked_unparked" Type="Boolean" Nullable="false" />
+          <Property Name="weather" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="light_level" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="road_quality" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="damage_description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="injury_description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="geolocation" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="manual_location" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="to_blame" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Car_Insurance_Company">
+          <Key>
+            <PropertyRef Name="Company_ID" />
+          </Key>
+          <Property Name="Company_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Company_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Postcode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Tel" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Claim_Person">
+          <Key>
+            <PropertyRef Name="Person_ID" />
+          </Key>
+          <Property Name="Person_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Claim_ID" Type="Int32" Nullable="false" />
+          <Property Name="is_driver" Type="Boolean" Nullable="false" />
+          <Property Name="is_witness" Type="Boolean" Nullable="false" />
+          <Property Name="is_owner" Type="Boolean" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="address" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="postcode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="car_reg" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="has_insurance" Type="Boolean" />
+          <Property Name="insurance_comp" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="insurance_addr" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="insurance_postcode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="wit_statement" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Insurance_Policy">
+          <Key>
+            <PropertyRef Name="Policy_ID" />
+          </Key>
+          <Property Name="Policy_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Company_ID" Type="Int32" Nullable="false" />
+          <Property Name="policyholder_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="policyholder_dob" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="date_started" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="date_end" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="type" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="QuickclaimsEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Car_Insurance_Claim" EntityType="Self.Car_Insurance_Claim" />
+          <EntitySet Name="Car_Insurance_Company" EntityType="Self.Car_Insurance_Company" />
+          <EntitySet Name="Claim_Person" EntityType="Self.Claim_Person" />
+          <EntitySet Name="Insurance_Policy" EntityType="Self.Insurance_Policy" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="QuickclaimsModelStoreContainer" CdmEntityContainer="QuickclaimsEntities">
+          <EntitySetMapping Name="Car_Insurance_Claim">
+            <EntityTypeMapping TypeName="QuickclaimsModel.Car_Insurance_Claim">
+              <MappingFragment StoreEntitySet="Car_Insurance_Claim">
+                <ScalarProperty Name="Claim_ID" ColumnName="Claim_ID" />
+                <ScalarProperty Name="Policy_ID" ColumnName="Policy_ID" />
+                <ScalarProperty Name="Company_ID" ColumnName="Company_ID" />
+                <ScalarProperty Name="claim_title" ColumnName="claim_title" />
+                <ScalarProperty Name="datetimeofaccident" ColumnName="datetimeofaccident" />
+                <ScalarProperty Name="car_reg" ColumnName="car_reg" />
+                <ScalarProperty Name="car_make" ColumnName="car_make" />
+                <ScalarProperty Name="car_model" ColumnName="car_model" />
+                <ScalarProperty Name="car_colour" ColumnName="car_colour" />
+                <ScalarProperty Name="parked_unparked" ColumnName="parked_unparked" />
+                <ScalarProperty Name="weather" ColumnName="weather" />
+                <ScalarProperty Name="light_level" ColumnName="light_level" />
+                <ScalarProperty Name="road_quality" ColumnName="road_quality" />
+                <ScalarProperty Name="damage_description" ColumnName="damage_description" />
+                <ScalarProperty Name="injury_description" ColumnName="injury_description" />
+                <ScalarProperty Name="geolocation" ColumnName="geolocation" />
+                <ScalarProperty Name="manual_location" ColumnName="manual_location" />
+                <ScalarProperty Name="to_blame" ColumnName="to_blame" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Car_Insurance_Company">
+            <EntityTypeMapping TypeName="QuickclaimsModel.Car_Insurance_Company">
+              <MappingFragment StoreEntitySet="Car_Insurance_Company">
+                <ScalarProperty Name="Company_ID" ColumnName="Company_ID" />
+                <ScalarProperty Name="Company_Name" ColumnName="Company_Name" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Postcode" ColumnName="Postcode" />
+                <ScalarProperty Name="Tel" ColumnName="Tel" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Claim_Person">
+            <EntityTypeMapping TypeName="QuickclaimsModel.Claim_Person">
+              <MappingFragment StoreEntitySet="Claim_Person">
+                <ScalarProperty Name="Person_ID" ColumnName="Person_ID" />
+                <ScalarProperty Name="Claim_ID" ColumnName="Claim_ID" />
+                <ScalarProperty Name="is_driver" ColumnName="is_driver" />
+                <ScalarProperty Name="is_witness" ColumnName="is_witness" />
+                <ScalarProperty Name="is_owner" ColumnName="is_owner" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="postcode" ColumnName="postcode" />
+                <ScalarProperty Name="car_reg" ColumnName="car_reg" />
+                <ScalarProperty Name="has_insurance" ColumnName="has_insurance" />
+                <ScalarProperty Name="insurance_comp" ColumnName="insurance_comp" />
+                <ScalarProperty Name="insurance_addr" ColumnName="insurance_addr" />
+                <ScalarProperty Name="insurance_postcode" ColumnName="insurance_postcode" />
+                <ScalarProperty Name="wit_statement" ColumnName="wit_statement" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Insurance_Policy">
+            <EntityTypeMapping TypeName="QuickclaimsModel.Insurance_Policy">
+              <MappingFragment StoreEntitySet="Insurance_Policy">
+                <ScalarProperty Name="Policy_ID" ColumnName="Policy_ID" />
+                <ScalarProperty Name="Company_ID" ColumnName="Company_ID" />
+                <ScalarProperty Name="policyholder_name" ColumnName="policyholder_name" />
+                <ScalarProperty Name="policyholder_dob" ColumnName="policyholder_dob" />
+                <ScalarProperty Name="date_started" ColumnName="date_started" />
+                <ScalarProperty Name="date_end" ColumnName="date_end" />
+                <ScalarProperty Name="type" ColumnName="type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

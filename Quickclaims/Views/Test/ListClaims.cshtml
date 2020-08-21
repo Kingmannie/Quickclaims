@@ -1,0 +1,129 @@
+﻿@model IEnumerable<Quickclaims.Data.Car_Insurance_Claim>
+
+@{
+    ViewBag.Title = "ListClaims";
+}
+
+<h2>ListClaims</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Policy_ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Company_ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.claim_title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.datetimeofaccident)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.car_reg)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.car_make)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.car_model)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.car_colour)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.parked_unparked)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.weather)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.light_level)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.road_quality)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.damage_description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.injury_description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.geolocation)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.manual_location)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.to_blame)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Policy_ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Company_ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.claim_title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.datetimeofaccident)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.car_reg)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.car_make)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.car_model)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.car_colour)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.parked_unparked)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.weather)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.light_level)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.road_quality)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.damage_description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.injury_description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.geolocation)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.manual_location)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.to_blame)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Claim_ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Claim_ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Claim_ID })
+        </td>
+    </tr>
+}
+
+</table>
